@@ -1,0 +1,43 @@
+.App {}
+
+@mixin hfpar($h, $c) {
+    width: 100%;
+    height: $h;
+    background-color: $c;
+}
+
+
+header {
+    @include hfpar(80px, yellow);
+    margin-bottom: 20px;
+
+
+    .headerElements {
+        width: 1500px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        margin: 0 auto;
+
+
+        .logo {
+            width: 160px;
+
+        }
+    }
+
+
+}
+
+main {
+    background-color: red;
+    width: 1500px;
+    height: 100vh;
+    padding: 0;
+    margin: 0 auto;
+}
+
+footer {
+    @include hfpar(80px, gray);
+    margin-top: 20px;
+}
