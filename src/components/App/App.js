@@ -1,10 +1,10 @@
-import './App.scss';
-import logoEtagi from './img/logoeragi.svg'
+import './../../scss/stylesComponent/app.scss';
+import logoEtagi from './../../img/logoeragi.svg'
 
 import { connect, useDispatch } from "react-redux";
-import { setInputValue } from "./redux/testReducer";
+import { setInputValue } from "../../redux/testReducer";
 import { NavLink, Routes, Route } from 'react-router-dom';
-import Main from './components/Main';
+import Main from '../Main/Main';
 
 
 function App({ count, inputValue }) {
@@ -29,9 +29,9 @@ function App({ count, inputValue }) {
                     <Route path='/' exact element={(<Main />)} />
                 </Routes>
 
-            <footer>
+            {/* <footer>
 
-            </footer>
+            </footer> */}
 
 
         </div>

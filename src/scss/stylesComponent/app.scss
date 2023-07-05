@@ -1,4 +1,9 @@
-.App {}
+@import './../constants.scss';
+
+.App {
+
+
+}
 
 @mixin hfpar($h, $c) {
     width: 100%;
@@ -13,7 +18,7 @@ header {
 
 
     .headerElements {
-        width: 1500px;
+        width: $width__main;
         height: 100%;
         display: flex;
         align-items: center;
@@ -31,13 +36,17 @@ header {
 
 main {
     background-color: red;
-    width: 1500px;
-    height: 100vh;
+    max-width: $width__main;
+    // height: 100vh;
     padding: 0;
     margin: 0 auto;
+
 }
 
 footer {
     @include hfpar(80px, gray);
     margin-top: 20px;
+
+
+    
 }

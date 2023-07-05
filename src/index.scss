@@ -1,5 +1,5 @@
 @import '~bootstrap/scss/bootstrap';
-
+@import './base.scss';
 
 body {
   margin: 0;
@@ -14,3 +14,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+
+
+@import './scss/constants.scss';
+@import './scss/variables.scss';
+@import './scss/mixins__media.scss';
+@import './scss/stylesComponent/carousel.scss';
+@import './scss/stylesComponent/main.scss';
+@import './scss/stylesComponent/app.scss';
+@import './scss/stylesComponent/cardApartment.scss';
+@import './scss/stylesComponent/modal__display.scss';
+
+
+
+

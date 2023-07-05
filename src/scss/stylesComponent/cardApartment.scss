@@ -1,0 +1,45 @@
+.cardApartment {
+    user-select: none;
+    box-sizing: content-box;
+    width: 450px;
+    height: 200px;
+    background-color: rgb(235, 235, 235);
+    border: 1px solid rgba(0, 0, 0, 0.432);
+    border-radius: 15px;
+    // margin-right: 50px;
+
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.164);
+    &:hover {
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.623);
+    }
+
+    transition: box-shadow .3s;
+}
+
+
+.card__img {
+
+
+    img {
+        height: 200px;
+        // width: 200px;
+        margin-right: 20px;
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+    }
+
+}
+
+
+.card__info {
+    display: flex;
+    flex-direction: column;
+
+    span {
+        // width: 200px;
+        white-space: nowrap;
+    }
+}

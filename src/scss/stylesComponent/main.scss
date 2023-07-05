@@ -1,0 +1,55 @@
+@import './../constants.scss';
+
+// %whhouses {
+//     width: 400px;
+//     height: 300px;
+//     display: flex;
+//     margin: 0;
+// }
+
+
+// .house1 {
+//     @extend %whhouses;
+//     background-color: green;
+// }
+
+
+// .house2 {
+//     @extend %whhouses;
+//     background-color: blue;
+// }
+
+
+main {
+    display: flex;
+}
+
+.cards {
+    width: 75%;
+    // height: 100%;
+    background-color: rgb(110, 110, 255);
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+
+   
+
+    // justify-content: space-between;
+
+}
+
+.button__cards {
+    margin: 0;
+    padding: 0;
+    border: 0;
+
+    cursor: pointer;
+}
+
+
+.filters {
+    width: 25%;
+    height: 100%;
+    color: rgb(34, 216, 146);
+}

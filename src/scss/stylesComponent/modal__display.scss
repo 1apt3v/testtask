@@ -1,0 +1,20 @@
+.modal {
+    width: 800px;
+}
+
+.modal__display {
+    display: flex;
+}
+
+
+@include desktop {
+    .modal__display {
+        flex-wrap: nowrap;
+    }
+}
+
+@include desktop__small {
+    .modal__display {
+        flex-wrap: wrap;
+    }
+}

@@ -1,0 +1,25 @@
+.carousel {
+    width: 500px;
+
+    .carousel-indicators {
+        button {
+            background-color: $color__main;
+            height: 6px;
+        }
+    }
+
+    .carousel-control-next,
+    .carousel-control-prev {
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+    }
+
+}
+
+
+
+.d-block {
+    max-height: 500px;
+    
+}
