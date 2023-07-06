@@ -1,5 +1,3 @@
-@import './../constants.scss';
-
 // %whhouses {
 //     width: 400px;
 //     height: 300px;
@@ -22,18 +20,31 @@
 
 main {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.wrapper__content {
+    display: flex;
+    flex-direction: row-reverse;
 }
 
 .cards {
-    width: 75%;
+    // width: 75%;
     // height: 100%;
     background-color: rgb(110, 110, 255);
 
     display: flex;
     flex-wrap: wrap;
     gap: 50px;
+    flex: 1;
 
-   
+    margin-left: 10px;
+    margin-right: 10px;
+
+
+
 
     // justify-content: space-between;
 
@@ -49,7 +60,104 @@ main {
 
 
 .filters {
-    width: 25%;
+    width: 400px;
+    // height: 200px;
+    background-color: rgb(34, 216, 146);
+
+    display: flex;
+    flex-direction: column;
+
+    padding-left: 20px;
+    padding-right: 20px;
+
+    h2 {
+        font-size: 24px;
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    .input__wrapper {
+        display: flex;
+        margin-bottom: 10px;
+        width: 100%;
+        span {
+            width: 50%;
+        }
+        
+    }
+
+    button {
+        margin-top: 20px;
+
+    }
+}
+
+.pagination {
+    width: 500px;
+    height: 30px;
+    background-color: chocolate;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    margin: 20px 0;
+}
+
+.pagination__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
     height: 100%;
-    color: rgb(34, 216, 146);
+    background-color: purple;
+    color: white;
+    cursor: pointer;
+}
+
+
+
+
+@include tablet {
+    .wrapper__content {
+        flex-wrap: nowrap;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cards {
+        width: 550px;
+    }
+
+    .filters {
+        width: 100%;
+        align-items: center;
+
+        margin-bottom: 30px;
+
+
+
+        .input__wrapper {
+            width: 100%;
+            display: flex;
+        }
+
+        input {
+            width: 100%;
+        }
+
+        button {
+            width: 200px;
+        }
+    }
+
+
+}
+
+
+@include mobile {
+    .cards {
+        width: 360px;
+    }
+
 }

@@ -1,7 +1,9 @@
 import React from 'react';
-import './../../scss/stylesComponent/main.scss';
 import CardApartment from '../CardApartment/CardApartment';
 import MyVerticallyCenteredModal from '../Modal/Modal';
+import InputComponent from '../InputComponent/InputComponent';
+import Button from 'react-bootstrap/Button';
+import PaginationComponent from '../PaginationComponent/PaginationComponent';
 
 
 
@@ -9,34 +11,68 @@ import MyVerticallyCenteredModal from '../Modal/Modal';
 
 const Main = () => {
     const [modalShow, setModalShow] = React.useState(false);
-
+    const [fullFilters, setFullFilters] = React.useState(false)
 
     return (
         <main>
+            <div className='wrapper__content'>
+                <div className="filters">
+                    <h2>Фильтры</h2>
+                    <div className='main__filters'>
+                        <div className='input__wrapper'>
+                            <span>Цена</span>
+                            <InputComponent placeholder='От' />
+                            <InputComponent placeholder='До' />
+                        </div>
+                        <div className='input__wrapper'>
+                            <span>Количество комнат</span>
+                            <InputComponent placeholder='Количество комнат' />
+                        </div>
+                        <div className='input__wrapper'>
+                            <span>Общая площадь</span>
+                            <InputComponent placeholder='Общая площадь' />
+                        </div>
+                    </div>
 
-            <div className="cards">
+                    <div className='secondary__filters' style={fullFilters ? { display: 'block' } : { display: 'none' }}>
+                        <div className='input__wrapper'>
+                            <span>Этаж</span>
+                            <InputComponent placeholder='Этаж' />
+                        </div>
+                        <div className='input__wrapper'>
+                            <span>Площадь кухни</span>
+                            <InputComponent placeholder='Площадь кухни' />
+                        </div>
+                        <div className='input__wrapper'>
+                            <span>Жилая площадь</span>
+                            <InputComponent placeholder='Жилая площадь' />
+                        </div>
+                    </div>
 
-                <div className='button__cards' onClick={() => setModalShow(true)}>
-                    <CardApartment />
-                </div>
-                <div className='button__cards' onClick={() => setModalShow(true)}>
-                    <CardApartment />
-                </div>
-                <div className='button__cards' onClick={() => setModalShow(true)}>
-                    <CardApartment />
-                </div>
-                <div className='button__cards' onClick={() => setModalShow(true)}>
-                    <CardApartment />
+                    <button onClick={() => setFullFilters(!fullFilters)}>\/ Расширенный поиск</button>
+
+                    <Button>Отправить</Button>
                 </div>
 
+                <div className="cards">
+
+                    <div className='button__cards' onClick={() => setModalShow(true)}>
+                        <CardApartment />
+                    </div>
+                    <div className='button__cards' onClick={() => setModalShow(true)}>
+                        <CardApartment />
+                    </div>
+                    <div className='button__cards' onClick={() => setModalShow(true)}>
+                        <CardApartment />
+                    </div>
+                    <div className='button__cards' onClick={() => setModalShow(true)}>
+                        <CardApartment />
+                    </div>
+
+                </div>
             </div>
 
-            <div className="filters">
-
-
-            </div>
-
-
+            <PaginationComponent />
 
 
             <MyVerticallyCenteredModal
@@ -44,46 +80,6 @@ const Main = () => {
                 onHide={() => setModalShow(false)}
             />
 
-
-
-
-
-
-
-
-
-
-            {/* <Container> */}
-            {/* <Row className='g-0'>
-                    <Col className='col'>
-                        <div className="house1">
-                            111111111111111111111111111111111111111111
-                        </div>
-                    </Col>
-                    <Col className='col'>
-                        <div className="house2">
-                            222222222222222222122222222222222222222222222
-                        </div>
-                    </Col>
-                </Row> */}
-
-
-
-            {/* </Container> */}
-
-            {/* <div class="container">
-                <div class="row">
-                    <div class="col-sm">
-                        One of three columns
-                    </div>
-                    <div class="col-sm">
-                        One of three columns
-                    </div>
-                    <div class="col-sm">
-                        One of three columns
-                    </div>
-                </div>
-            </div> */}
         </main>
     );
 };

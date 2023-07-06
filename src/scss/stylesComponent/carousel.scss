@@ -1,5 +1,14 @@
-.carousel {
-    width: 500px;
+.carousel__wrapper {
+    min-width: 500px;
+    height: 500px;
+
+}
+
+.carousel, .slide {
+    width: 100%;
+    height: 100%;
+
+
 
     .carousel-indicators {
         button {
@@ -17,9 +26,39 @@
 
 }
 
-
-
 .d-block {
     max-height: 500px;
-    
+
+}
+
+
+@include desktop {
+    .carousel__wrapper {
+        width: 100%;
+        
+    }
+}
+
+
+@include tablet {
+    .carousel__wrapper {
+        // width: 360px;
+        width: 100%;
+        height: 360px;
+    }
+
+    .d-block {
+        max-height: 360px;
+    }
+}
+
+@include mobile {
+    .carousel__wrapper {
+        width: 240px;
+        height: 240px;
+    }
+
+    .d-block {
+        max-height: 240px;
+    }
 }

@@ -2,7 +2,7 @@ import React from 'react';
 
 const CardApartment = () => {
     return (
-        <div className='cardApartment'>
+        <div className='card__apartment'>
             <div className='card__img'>
                 <img src="https://cdn.esoft.digital/content/cluster/layouts_2d/d5/9e/e8b89005da2d08a8620db552c52022f08cbe9ed5.png" alt="" />
             </div>
