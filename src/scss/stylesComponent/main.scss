@@ -60,7 +60,8 @@ main {
 
 
 .filters {
-    width: 400px;
+    // box-sizing: content-box;
+    width: 360px;
     // height: 200px;
     background-color: rgb(34, 216, 146);
 
@@ -83,12 +84,10 @@ main {
         span {
             width: 50%;
         }
+        .input__wrapper__price {
+            display: flex;
+        }
         
-    }
-
-    button {
-        margin-top: 20px;
-
     }
 }
 
@@ -123,10 +122,13 @@ main {
         flex-wrap: nowrap;
         flex-direction: column;
         align-items: center;
+        width: 100%;
+        padding: 0 50px;
     }
 
     .cards {
-        width: 550px;
+        width: 100%;
+        margin: 0;
     }
 
     .filters {
@@ -157,7 +159,12 @@ main {
 
 @include mobile {
     .cards {
-        width: 360px;
+        min-width: 360px;
+        width: 100%;
+    }
+
+    .filters {
+        min-width: 360px;
     }
 
 }

@@ -1,7 +1,7 @@
 import './../../scss/stylesComponent/app.scss';
 import logoEtagi from './../../img/logoeragi.svg'
 
-import { connect, useDispatch } from "react-redux";
+import { connect } from "react-redux";
 import { setInputValue } from "../../redux/testReducer";
 import { NavLink, Routes, Route } from 'react-router-dom';
 import Main from '../Main/Main';
@@ -9,7 +9,7 @@ import Main from '../Main/Main';
 
 function App({ count, inputValue }) {
 
-    const dispatch = useDispatch()
+
 
 
 

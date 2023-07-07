@@ -47,12 +47,27 @@
 }
 
 
-@include tablet {
-
+@media (max-width: 880px) {
     .button__cards {
         width: 100%;
     }
     .card__apartment {
+        width: 100%;
+    }
+}
+
+
+@include tablet {
+
+    .button__cards {
+
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .card__apartment {
+        // max-width: 550px;    
         width: 100%;
         height: 120px;
     }
@@ -68,6 +83,12 @@
 
 
 @include mobile {
+    .button__cards {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
     .card__apartment {
         width: 100%;
         height: 120px;
