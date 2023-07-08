@@ -18,7 +18,7 @@ function App({ count, inputValue, houses, modalHouseData, setModalHouseData, set
 
 
     const getData = async (page) => {
-        let data = await getHouseData(page)
+        let data = await getHouseDataPage(currentPage)
         if (data.message == '404') {
             console.log(data.message)
             // добавить loader
@@ -42,7 +42,7 @@ function App({ count, inputValue, houses, modalHouseData, setModalHouseData, set
     useEffect(() => {
         getData(currentPage)
         getTotalPages()
-    }, [])
+    }, [currentPage])
 
 
 

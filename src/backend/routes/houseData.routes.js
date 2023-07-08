@@ -3,7 +3,7 @@ const router = new Router()
 const houseDataController = require('../controller/houseData.controller')
 
 
-router.get('/houseData', houseDataController.getData)
+router.get('/houseData', houseDataController.getDataPage)
 router.get('/housesCount', houseDataController.getCountHouses)
 
 

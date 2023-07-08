@@ -11,10 +11,7 @@ export const getHouseData = async () => {
 export const getHouseDataPage = async (page) => {
     return await fetch(`http://localhost:8080/api/houseData?page=${page}`)
         .then(res => res.json())
-        .then(data => {
-            console.log('dasdas', data)
-            return data
-        })
+        .then(data => data)
         .catch(err => {
             console.error(err)
             return { message: '404' }

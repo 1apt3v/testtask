@@ -4,7 +4,7 @@ function PaginationComponent({ currentPage, setCurrentPage, totalPages, setTotal
 
     let items = [];
 
-    console.log(currentPage)
+    // console.log(currentPage)
 
 
     items.push(<Pagination.Prev key='prev' onClick={() => {
