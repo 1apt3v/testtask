@@ -4,20 +4,21 @@ import { connect, useDispatch } from "react-redux";
 import { setInputValue } from "../../redux/testReducer";
 import { NavLink, Routes, Route } from 'react-router-dom';
 import Main from '../Main/Main';
-import { getHouseData } from '../../fetch/fetch';
-import { useEffect } from 'react';
-import { setHousesData, setModalHouseData } from '../../redux/houseReducer';
+import { getHouseData, getHouseDataPage, getCountHouses } from '../../fetch/fetch';
+import { useEffect, useState } from 'react';
+import { setHousesData, setModalHouseData, setTotalPages, setCurrentPage } from '../../redux/houseReducer';
 
 
-function App({ count, inputValue, houses, modalHouseData, setModalHouseData }) {
 
+
+function App({ count, inputValue, houses, modalHouseData, setModalHouseData, setTotalPages, totalPages, currentPage, setCurrentPage }) {
 
     const dispatch = useDispatch()
 
 
 
-    const getData = async () => {
-        let data = await getHouseData()
+    const getData = async (page) => {
+        let data = await getHouseData(page)
         if (data.message == '404') {
             console.log(data.message)
             // добавить loader
@@ -27,10 +28,24 @@ function App({ count, inputValue, houses, modalHouseData, setModalHouseData }) {
     }
 
 
-    useEffect(() => {
-        getData()
+    const getTotalPages = async () => {
+        let count = await getCountHouses()
+        if (count.message == '404') {
+            console.log(count.message)
+            // добавить loader
+        } else {
+            dispatch(setTotalPages(count))
+        }
+    }
 
+
+    useEffect(() => {
+        getData(currentPage)
+        getTotalPages()
     }, [])
+
+
+
 
 
 
@@ -50,7 +65,17 @@ function App({ count, inputValue, houses, modalHouseData, setModalHouseData }) {
             </header>
 
             <Routes>
-                <Route path='/' exact element={(<Main data={houses} modalHouseData={modalHouseData} setModalHouseData={setModalHouseData} />)} />
+                <Route path='/' exact element={
+                    (<Main
+                        data={houses}
+                        modalHouseData={modalHouseData}
+                        setModalHouseData={setModalHouseData}
+                        totalPages={totalPages}
+                        setTotalPages={setTotalPages}
+                        currentPage={currentPage}
+                        setCurrentPage={setCurrentPage}
+                    />)
+                } />
             </Routes>
 
             {/* <footer>
@@ -71,8 +96,10 @@ let mapStateToProps = (state) => {
         count: state.testReducer.count,
         inputValue: state.testReducer.inputValue,
         houses: state.houseReducer.houses,
-        modalHouseData: state.houseReducer.modalHouseData
+        modalHouseData: state.houseReducer.modalHouseData,
+        totalPages: state.houseReducer.totalPages,
+        currentPage: state.houseReducer.currentPage
     }
 }
 
-export default connect(mapStateToProps, { setInputValue, setModalHouseData })(App);
+export default connect(mapStateToProps, { setInputValue, setModalHouseData, setTotalPages, setCurrentPage })(App);

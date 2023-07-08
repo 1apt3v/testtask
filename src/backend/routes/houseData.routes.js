@@ -4,5 +4,7 @@ const houseDataController = require('../controller/houseData.controller')
 
 
 router.get('/houseData', houseDataController.getData)
+router.get('/housesCount', houseDataController.getCountHouses)
+
 
 module.exports = router

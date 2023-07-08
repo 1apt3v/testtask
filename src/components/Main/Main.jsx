@@ -1,20 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import CardApartment from '../CardApartment/CardApartment';
 import MyVerticallyCenteredModal from '../Modal/Modal';
 import InputComponent from '../InputComponent/InputComponent';
 
 import PaginationComponent from '../PaginationComponent/PaginationComponent';
 import FiltersForms from '../FiltersForms/FiltersForms';
-import { useDispatch } from "react-redux";
 
 
 
 
-const Main = ({ data, modalHouseData, setModalHouseData }) => {
-
-
-    const dispatch = useDispatch()
+const Main = ({ data, modalHouseData, setModalHouseData, totalPages, setTotalPages, currentPage, setCurrentPage }) => {
+    
     const [modalShow, setModalShow] = React.useState(true);
+
+
+
 
     const CardApartmentElement = data.map(house => {
         return (
@@ -55,7 +55,7 @@ const Main = ({ data, modalHouseData, setModalHouseData }) => {
                 </div>
             </div>
 
-            <PaginationComponent />
+            <PaginationComponent totalPages={totalPages} setTotalPages={setTotalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
 
 
             <MyVerticallyCenteredModal
