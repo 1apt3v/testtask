@@ -10,9 +10,26 @@ import FiltersForms from '../FiltersForms/FiltersForms';
 
 
 
-const Main = () => {
+const Main = ({ data }) => {
     const [modalShow, setModalShow] = React.useState(false);
     const [fullFilters, setFullFilters] = React.useState(false)
+
+
+    const CardApartmentElement = data.map(house => {
+        return <CardApartment
+            id={house.id}
+            floor={house.floor}
+            pos_on_floor={house.pos_on_floor}
+            price={house.price}
+            rooms={house.rooms}
+            area_total={house.area_total}
+            area_kitchen={house.area_kitchen}
+            area_live={house.area_live}
+            layout_image={house.layout_image}
+            key={house.id}
+        />
+    })
+
 
     return (
         <main>
@@ -25,17 +42,9 @@ const Main = () => {
                 <div className="cards">
 
                     <div className='button__cards' onClick={() => setModalShow(true)}>
-                        <CardApartment />
+                        {CardApartmentElement}
                     </div>
-                    <div className='button__cards' onClick={() => setModalShow(true)}>
-                        <CardApartment />
-                    </div>
-                    <div className='button__cards' onClick={() => setModalShow(true)}>
-                        <CardApartment />
-                    </div>
-                    <div className='button__cards' onClick={() => setModalShow(true)}>
-                        <CardApartment />
-                    </div>
+
 
                 </div>
             </div>

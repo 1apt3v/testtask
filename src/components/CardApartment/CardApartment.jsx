@@ -1,23 +1,23 @@
 import React from 'react';
 
-const CardApartment = () => {
+const CardApartment = ({id, floor, pos_on_floor, price, rooms, area_total, area_kitchen, area_live, layout_image}) => {
     return (
         <div className='card__apartment'>
             <div className='card__img'>
-                <img src="https://cdn.esoft.digital/content/cluster/layouts_2d/d5/9e/e8b89005da2d08a8620db552c52022f08cbe9ed5.png" alt="" />
+                <img src={layout_image} alt="" />
             </div>
             <div className='card__info'>
                 <span>
-                    4 000 000
+                    Цена - {price}
                 </span>
                 <span>
-                    3 этаж
+                    Этаж - {floor}
                 </span>
                 <span>
-                    2 комнаты
+                    Количество комнат - {rooms}
                 </span>
                 <span>
-                    64.3 м2
+                    Общая площадь - {area_total} м2
                 </span>
             </div>
         </div>
