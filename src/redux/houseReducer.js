@@ -1,10 +1,21 @@
 import { createAction, createReducer } from "@reduxjs/toolkit";
 
-const initialState = []
+const initialState = {
+    houses: [],
+    modalHouseData: {}
+}
 
 
-export const setHouseData = createAction('SETHOUSEDATA')
+export const setHousesData = createAction('SETHOUSESDATA')
+export const setModalHouseData = createAction('SETMODALHOUSEDATA')
 
 export default createReducer(initialState, {
-    [setHouseData]: (state, action) => action.payload
+    [setHousesData]: (state, action) => {
+        state.houses = action.payload
+    },
+    [setModalHouseData]: (state, action) => {
+        state.modalHouseData = action.payload
+    }
 })
+
+

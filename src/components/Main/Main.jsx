@@ -5,19 +5,25 @@ import InputComponent from '../InputComponent/InputComponent';
 
 import PaginationComponent from '../PaginationComponent/PaginationComponent';
 import FiltersForms from '../FiltersForms/FiltersForms';
+import { useDispatch } from "react-redux";
 
 
 
 
+const Main = ({ data, modalHouseData, setModalHouseData }) => {
 
-const Main = ({ data }) => {
-    const [modalShow, setModalShow] = React.useState(false);
-    const [fullFilters, setFullFilters] = React.useState(false)
 
+    const dispatch = useDispatch()
+    const [modalShow, setModalShow] = React.useState(true);
 
     const CardApartmentElement = data.map(house => {
         return (
-            <div className='button__cards' onClick={() => setModalShow(true)}>
+            <div className='button__cards' key={house.id} onClick={() => {
+                const obj = data.find(data => data.id === house.id)
+                setModalHouseData(obj)
+                setModalShow(true)
+
+            }}>
                 <CardApartment
                     id={house.id}
                     floor={house.floor}
@@ -28,7 +34,6 @@ const Main = ({ data }) => {
                     area_kitchen={house.area_kitchen}
                     area_live={house.area_live}
                     layout_image={house.layout_image}
-                    key={house.id}
                 />
             </div>
         )
@@ -44,17 +49,7 @@ const Main = ({ data }) => {
                 </div>
 
                 <div className="cards">
-
-
                     {CardApartmentElement}
-                    {/* <div>123123</div>
-                        <div>123123</div>
-                        <div>123123</div>
-                        <div>123123</div> */}
-
-
-
-
 
 
                 </div>
@@ -65,7 +60,11 @@ const Main = ({ data }) => {
 
             <MyVerticallyCenteredModal
                 show={modalShow}
-                onHide={() => setModalShow(false)}
+                onHide={() => {
+                    setModalHouseData({})
+                    setModalShow(false)
+                }}
+                modalHouseData={modalHouseData}
             />
 
         </main>

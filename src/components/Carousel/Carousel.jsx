@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 
 
-function ControlledCarousel() {
+function ControlledCarousel({image}) {
     const [index, setIndex] = useState(0);
 
     const handleSelect = (selectedIndex) => {
@@ -16,7 +16,7 @@ function ControlledCarousel() {
                     <div className="d-flex justify-content-center w-100 h-100">
                         <img
                             className="d-block"
-                            src="https://cdn.esoft.digital/content/cluster/layouts_2d/d5/9e/e8b89005da2d08a8620db552c52022f08cbe9ed5.png"
+                            src={image}
                             alt="First slide"
                         />
                     </div>

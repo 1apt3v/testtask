@@ -6,10 +6,10 @@ import { NavLink, Routes, Route } from 'react-router-dom';
 import Main from '../Main/Main';
 import { getHouseData } from '../../fetch/fetch';
 import { useEffect } from 'react';
-import { setHouseData } from '../../redux/houseReducer';
+import { setHousesData, setModalHouseData } from '../../redux/houseReducer';
 
 
-function App({ count, inputValue, houseData }) {
+function App({ count, inputValue, houses, modalHouseData, setModalHouseData }) {
 
 
     const dispatch = useDispatch()
@@ -22,7 +22,7 @@ function App({ count, inputValue, houseData }) {
             console.log(data.message)
             // добавить loader
         } else {
-            dispatch(setHouseData(data))
+            dispatch(setHousesData(data))
         }
     }
 
@@ -50,7 +50,7 @@ function App({ count, inputValue, houseData }) {
             </header>
 
             <Routes>
-                <Route path='/' exact element={(<Main data={houseData} />)} />
+                <Route path='/' exact element={(<Main data={houses} modalHouseData={modalHouseData} setModalHouseData={setModalHouseData} />)} />
             </Routes>
 
             {/* <footer>
@@ -70,8 +70,9 @@ let mapStateToProps = (state) => {
     return {
         count: state.testReducer.count,
         inputValue: state.testReducer.inputValue,
-        houseData: state.houseReducer
+        houses: state.houseReducer.houses,
+        modalHouseData: state.houseReducer.modalHouseData
     }
 }
 
-export default connect(mapStateToProps, { setInputValue })(App);
+export default connect(mapStateToProps, { setInputValue, setModalHouseData })(App);

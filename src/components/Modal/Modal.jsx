@@ -5,38 +5,42 @@ import ModalInfoElement from './ModalInfoElement';
 
 
 
-function MyVerticallyCenteredModal(props) {
+function MyVerticallyCenteredModal({ show, onHide, modalHouseData }) {
+
+    if ((modalHouseData === undefined) || (Object.keys(modalHouseData).length === 0)) {
+        return 
+    } 
+
+    const {floor, pos_on_floor, price, rooms, area_total, area_kitchen, area_live, layout_image} = modalHouseData
+
     return (
         <Modal
-            {...props}
+            show={show}
+            onHide={onHide}
             // size="xl"
             aria-labelledby="contained-modal-title-vcenter"
             centered
             dialogClassName="my-modal"
         >
-            <Button onClick={props.onHide}>Close</Button>
+            <Button onClick={onHide}>Close</Button>
             <Modal.Body>
                 <div className="modal__display">
-                    <ControlledCarousel />
+                    <ControlledCarousel image={layout_image} />
                     <div className='modal__info'>
                         <h4>Информация о объекте</h4>
-                        <ModalInfoElement title={"Этаж объекта"} content={"1"} />
-                        <ModalInfoElement title={"Положение квартиры на этаже"} content={"2"} />
-                        <ModalInfoElement title={"Цена"} content={"3"} />
-                        <ModalInfoElement title={"Количество комнат"} content={"4"} />
-                        <ModalInfoElement title={"Общая площадь"} content={"5"} />
-                        <ModalInfoElement title={"Площадь кухни"} content={"6"} />
-                        <ModalInfoElement title={"Жилая площадь"} content={"7"} />
-
+                        <ModalInfoElement title={"Этаж объекта"} content={floor} />
+                        <ModalInfoElement title={"Положение квартиры на этаже"} content={pos_on_floor} />
+                        <ModalInfoElement title={"Цена"} content={price} />
+                        <ModalInfoElement title={"Количество комнат"} content={rooms} />
+                        <ModalInfoElement title={"Общая площадь"} content={area_total} />
+                        <ModalInfoElement title={"Площадь кухни"} content={area_kitchen} />
+                        <ModalInfoElement title={"Жилая площадь"} content={area_live} />
                     </div>
                 </div>
 
-
-
-
             </Modal.Body>
             <Modal.Footer>
-                <Button onClick={props.onHide}>Close</Button>
+                <Button onClick={onHide}>Close</Button>
             </Modal.Footer>
         </Modal>
     );
