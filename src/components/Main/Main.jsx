@@ -16,18 +16,22 @@ const Main = ({ data }) => {
 
 
     const CardApartmentElement = data.map(house => {
-        return <CardApartment
-            id={house.id}
-            floor={house.floor}
-            pos_on_floor={house.pos_on_floor}
-            price={house.price}
-            rooms={house.rooms}
-            area_total={house.area_total}
-            area_kitchen={house.area_kitchen}
-            area_live={house.area_live}
-            layout_image={house.layout_image}
-            key={house.id}
-        />
+        return (
+            <div className='button__cards' onClick={() => setModalShow(true)}>
+                <CardApartment
+                    id={house.id}
+                    floor={house.floor}
+                    pos_on_floor={house.pos_on_floor}
+                    price={house.price}
+                    rooms={house.rooms}
+                    area_total={house.area_total}
+                    area_kitchen={house.area_kitchen}
+                    area_live={house.area_live}
+                    layout_image={house.layout_image}
+                    key={house.id}
+                />
+            </div>
+        )
     })
 
 
@@ -41,9 +45,16 @@ const Main = ({ data }) => {
 
                 <div className="cards">
 
-                    <div className='button__cards' onClick={() => setModalShow(true)}>
-                        {CardApartmentElement}
-                    </div>
+
+                    {CardApartmentElement}
+                    {/* <div>123123</div>
+                        <div>123123</div>
+                        <div>123123</div>
+                        <div>123123</div> */}
+
+
+
+
 
 
                 </div>
