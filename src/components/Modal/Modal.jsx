@@ -49,14 +49,19 @@ function MyVerticallyCenteredModal({ show, onHide, modalHouseData, activeIndex, 
             {/* <Button onClick={onHide}>Close</Button> */}
             <Modal.Body>
                 <div className="modal__display">
-                    <ControlledCarousel image={layout_image} pos_on_floor={pos_on_floor} activeIndex={activeIndex} setActiveIndex={setActiveIndex} />
+                    <ControlledCarousel
+                        image={layout_image}
+                        pos_on_floor={pos_on_floor}
+                        activeIndex={activeIndex}
+                        setActiveIndex={setActiveIndex}
+                    />
                     <div className='modal__info'>
                         <h4>Информация о объекте</h4>
                         <ModalInfoElement title={"Этаж объекта"} content={floor} />
                         {/* <ModalInfoElement title={"Положение квартиры на этаже"} content={pos_on_floor} /> */}
                         <ModalInfoElement title={"Цена"} content={formatedPrice} symbol={'₽'} />
                         <ModalInfoElement title={"Количество комнат"} content={rooms} />
-                        <ModalInfoElement title={"Общая площадь"} content={area_total} symbol={'м2'}/>
+                        <ModalInfoElement title={"Общая площадь"} content={area_total} symbol={'м2'} />
                         <ModalInfoElement title={"Площадь кухни"} content={area_kitchen} symbol={'м2'} />
                         <ModalInfoElement title={"Жилая площадь"} content={area_live} symbol={'м2'} />
                     </div>

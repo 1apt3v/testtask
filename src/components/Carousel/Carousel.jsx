@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 
 
-function ControlledCarousel({ image, activeIndex, setActiveIndex, pos_on_floor }) {
+function ControlledCarousel({ image, activeIndex, setActiveIndex, pos_on_floor, loaderActive, setLoaderActive }) {
 
     const handleSelect = (selectedIndex) => {
         setActiveIndex(selectedIndex);

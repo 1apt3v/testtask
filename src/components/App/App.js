@@ -9,7 +9,11 @@ import { useEffect, useState } from 'react';
 import { setHousesData, setModalHouseData, setTotalPages, setCurrentPage, setTotalHouses, } from '../../redux/houseReducer';
 import { setFiltersValue, setFullFilters, setSortValue } from '../../redux/filtersReducer';
 import { setIsActiveModal } from './../../redux/modalReducer'
+import { setLoaderActive } from './../../redux/loaderReducer'
 import { setActiveIndex } from './../../redux/carouselReducer'
+import Loader from './../Loader/Loader'
+
+
 
 
 function App({
@@ -33,7 +37,9 @@ function App({
     isActiveModal,
     setIsActiveModal,
     activeIndex,
-    setActiveIndex
+    setActiveIndex,
+    loaderActive,
+    setLoaderActive
 }) {
 
     const dispatch = useDispatch()
@@ -41,7 +47,7 @@ function App({
 
 
     const getData = async (currentPage, filters, sortValue) => {
-
+        setLoaderActive(true)
         let data = await getFilteredHouses(currentPage, filters, sortValue)
         if (data.message == '404') {
             console.log(data.message)
@@ -50,6 +56,7 @@ function App({
             dispatch(setHousesData(data.rows))
             dispatch(setTotalPages(data.count))
             setTotalHouses(data.count)
+            setLoaderActive(false)
         }
     }
 
@@ -100,6 +107,8 @@ function App({
 
             </header>
 
+
+
             <Routes>
                 <Route path='/' exact element={
                     (<Main
@@ -121,6 +130,8 @@ function App({
                         setIsActiveModal={setIsActiveModal}
                         activeIndex={activeIndex}
                         setActiveIndex={setActiveIndex}
+                        loaderActive={loaderActive}
+                        setLoaderActive={setLoaderActive}
                     />)
                 } />
             </Routes>
@@ -137,7 +148,7 @@ function App({
 
 
 let mapStateToProps = (state) => {
-    // console.log(state)
+    console.log(state)
 
     return {
         count: state.testReducer.count,
@@ -151,7 +162,8 @@ let mapStateToProps = (state) => {
         sortValue: state.filtersReducer.sortValue,
         fullFilters: state.filtersReducer.fullFilters,
         isActiveModal: state.modalReducer.isActiveModal,
-        activeIndex: state.carouselReducer.activeIndex
+        activeIndex: state.carouselReducer.activeIndex,
+        loaderActive: state.loaderReducer.loaderActive
     }
 }
 
@@ -164,6 +176,7 @@ export default connect(
         setTotalPages, setCurrentPage,
         setFiltersValue, setTotalHouses,
         setSortValue, setFullFilters,
-        setIsActiveModal, setActiveIndex
+        setIsActiveModal, setActiveIndex,
+        setLoaderActive
     })
     (App);
