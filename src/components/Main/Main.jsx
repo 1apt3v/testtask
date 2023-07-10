@@ -10,7 +10,15 @@ import SortForms from '../SortForms/SortForms';
 
 
 
-const Main = ({ data, modalHouseData, setModalHouseData, totalPages, setTotalPages, currentPage, setCurrentPage, filters, setFiltersValue, totalHouses }) => {
+const Main = ({
+    data,
+    modalHouseData, setModalHouseData,
+    totalPages, setTotalPages,
+    currentPage, setCurrentPage,
+    filters, setFiltersValue,
+    totalHouses,
+    sortValue, setSortValue
+}) => {
 
     const [modalShow, setModalShow] = React.useState(true);
 
@@ -45,7 +53,7 @@ const Main = ({ data, modalHouseData, setModalHouseData, totalPages, setTotalPag
             <div className='wrapper__content'>
                 <div className="filters">
                     <h2>Сортировка</h2>
-                    <SortForms />
+                    <SortForms sortValue={sortValue} setSortValue={setSortValue} />
                     <h2>Фильтры</h2>
                     <FiltersForms totalHouses={totalHouses} setFiltersValue={setFiltersValue} />
                 </div>

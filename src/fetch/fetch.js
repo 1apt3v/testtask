@@ -31,18 +31,25 @@ export const getCountHouses = async () => {
         })
 }
 
-export const getFilteredHouses = async (currentPage, filters) => {
+export const getFilteredHouses = async (currentPage, filters, sortValue) => {
     const url = `http://localhost:8080/api/houseWithFilterData`
-    const arrQueryParams = ['?', `page=${currentPage}&`]
+    const arrQueryParams = ['?', `page=${currentPage}`]
     const keysFilters = Object.keys(filters)
     const valuesFilters = Object.values(filters)
 
+    if (sortValue.length > 0) {
+        arrQueryParams.push(`&sortvalue=${sortValue}`)
+    }
+
+    arrQueryParams.push('&')
     for (let i = 0; i < Object.keys(filters).length; i++) {
         arrQueryParams.push(`${keysFilters[i].toLocaleLowerCase()}=${valuesFilters[i]}`)
         if (!(i === Object.keys(filters).length - 1)) {
             arrQueryParams.push('&')
         }
     }
+
+
     const stringQueryParams = arrQueryParams.join('')
     const newUrl = url + stringQueryParams
     console.log(newUrl)

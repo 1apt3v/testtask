@@ -113,7 +113,7 @@ class HouseDataController {
             livingareafrom, livingareato,
             numberofroomsfrom, numberofroomsto,
             totalareafrom, totalareato,
-            page,
+            page, sortvalue
         } = params
 
 
@@ -169,6 +169,32 @@ class HouseDataController {
             queryObj.area_total = { ...queryObj.area_total, [Op.lte]: [totalareato] }
         }
 
+        // Сортировка
+        let sortQuery = []
+
+        switch (sortvalue) {
+            case 'price_up': {
+                sortQuery = [['price', 'DESC']]
+                break
+            }
+            case 'price_down': {
+                sortQuery = [['price', 'ASC']]
+                break
+            }
+            case 'area_total_up': {
+                sortQuery = [['area_total', 'DESC']]
+                break
+            }
+            case 'floor_up': {
+                sortQuery = [['floor', 'DESC']]
+                break
+            }
+            default: {
+                sortQuery = []
+                break
+            }
+        }
+
         const maxElement = 8
         let newPage = page - 1
 
@@ -176,14 +202,15 @@ class HouseDataController {
             newPage *= maxElement
         }
 
-        console.log(queryObj)
+        console.log('123123123', sortvalue)
 
         const filteredHouses = await FlatsData.findAndCountAll({
             where: {
                 ...queryObj
             },
             offset: newPage,
-            limit: maxElement
+            limit: maxElement,
+            order: sortQuery
         })
         // .then(data => console.log(data.count))
 

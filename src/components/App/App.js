@@ -7,7 +7,7 @@ import Main from '../Main/Main';
 import { getHouseData, getHouseDataPage, getCountHouses, getFilteredHouses } from '../../fetch/fetch';
 import { useEffect, useState } from 'react';
 import { setHousesData, setModalHouseData, setTotalPages, setCurrentPage, setTotalHouses, } from '../../redux/houseReducer';
-import { setFiltersValue } from '../../redux/filtersReducer';
+import { setFiltersValue, setSortValue } from '../../redux/filtersReducer';
 
 
 function App({
@@ -23,16 +23,18 @@ function App({
     filters,
     setFiltersValue,
     totalHouses,
-    setTotalHouses
+    setTotalHouses,
+    sortValue,
+    setSortValue
 }) {
 
     const dispatch = useDispatch()
 
 
 
-    const getData = async (currentPage, filters) => {
+    const getData = async (currentPage, filters, sortValue) => {
 
-        let data = await getFilteredHouses(currentPage, filters)
+        let data = await getFilteredHouses(currentPage, filters, sortValue)
         if (data.message == '404') {
             console.log(data.message)
             // добавить loader
@@ -58,7 +60,7 @@ function App({
 
 
     useEffect(() => {
-        getData(currentPage, filters)
+        getData(currentPage, filters, sortValue)
         // getTotalPages()
 
 
@@ -68,7 +70,7 @@ function App({
 
         // }
 
-    }, [currentPage, filters])
+    }, [currentPage, filters, sortValue])
 
 
 
@@ -103,6 +105,8 @@ function App({
                         filters={filters}
                         setFiltersValue={setFiltersValue}
                         totalHouses={totalHouses}
+                        sortValue={sortValue}
+                        setSortValue={setSortValue}
                     />)
                 } />
             </Routes>
@@ -129,8 +133,10 @@ let mapStateToProps = (state) => {
         totalPages: state.houseReducer.totalPages,
         currentPage: state.houseReducer.currentPage,
         filters: state.filtersReducer.filters,
-        totalHouses: state.houseReducer.totalHouses
+        totalHouses: state.houseReducer.totalHouses,
+        sortValue: state.filtersReducer.sortValue
     }
 }
 
-export default connect(mapStateToProps, { setInputValue, setModalHouseData, setTotalPages, setCurrentPage, setFiltersValue, setTotalHouses })(App);
+
+export default connect(mapStateToProps, { setInputValue, setModalHouseData, setTotalPages, setCurrentPage, setFiltersValue, setTotalHouses, setSortValue })(App);

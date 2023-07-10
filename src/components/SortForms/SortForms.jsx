@@ -1,23 +1,16 @@
 import React from 'react';
 import { useForm, SubmitHandler, useFormState } from "react-hook-form"
 
-export function Select({ register, options, name, ...rest }) {
-    return (
-        <select {...register(name)} {...rest}>
-            {options.map((value) => (
-                <option value={value}>{value}</option>
-            ))}
-        </select>
-    );
-}
+const SortForms = ({ sortValue, setSortValue }) => {
+    const { register, handleSubmit, watch, formState: { errors } } = useForm()
 
-const SortForms = ({ options }) => {
-    const { register, handleSubmit, watch, formState: { errors }, control } = useForm()
+    console.log(sortValue)
+
     return (
         <div className='sorts'>
             {/* <label>По цене</label> */}
-            <select {...register('sort')}>
-                <option value="" selected disabled hidden>Выбрать</option>
+            <select {...register('sort')} onChange={(e) => setSortValue(e.target.value)} value={sortValue}>
+                <option value="" disabled hidden>Выбрать</option>
                 <option value={"price_up"}>Сначала дорогие</option>
                 <option value={"price_down"}>Сначала недорогие</option>
                 <option value={"area_total_up"}>Сначала просторные</option>
