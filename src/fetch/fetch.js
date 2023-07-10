@@ -52,7 +52,7 @@ export const getFilteredHouses = async (currentPage, filters, sortValue) => {
 
     const stringQueryParams = arrQueryParams.join('')
     const newUrl = url + stringQueryParams
-    console.log(newUrl)
+    // console.log(newUrl)
 
 
     // если фильтры пустые

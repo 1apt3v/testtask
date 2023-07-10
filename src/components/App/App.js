@@ -7,7 +7,9 @@ import Main from '../Main/Main';
 import { getHouseData, getHouseDataPage, getCountHouses, getFilteredHouses } from '../../fetch/fetch';
 import { useEffect, useState } from 'react';
 import { setHousesData, setModalHouseData, setTotalPages, setCurrentPage, setTotalHouses, } from '../../redux/houseReducer';
-import { setFiltersValue, setSortValue } from '../../redux/filtersReducer';
+import { setFiltersValue, setFullFilters, setSortValue } from '../../redux/filtersReducer';
+import { setIsActiveModal } from './../../redux/modalReducer'
+import { setActiveIndex } from './../../redux/carouselReducer'
 
 
 function App({
@@ -25,7 +27,13 @@ function App({
     totalHouses,
     setTotalHouses,
     sortValue,
-    setSortValue
+    setSortValue,
+    fullFilters,
+    setFullFilters,
+    isActiveModal,
+    setIsActiveModal,
+    activeIndex,
+    setActiveIndex
 }) {
 
     const dispatch = useDispatch()
@@ -107,6 +115,12 @@ function App({
                         totalHouses={totalHouses}
                         sortValue={sortValue}
                         setSortValue={setSortValue}
+                        fullFilters={fullFilters}
+                        setFullFilters={setFullFilters}
+                        isActiveModal={isActiveModal}
+                        setIsActiveModal={setIsActiveModal}
+                        activeIndex={activeIndex}
+                        setActiveIndex={setActiveIndex}
                     />)
                 } />
             </Routes>
@@ -123,7 +137,7 @@ function App({
 
 
 let mapStateToProps = (state) => {
-    console.log(state)
+    // console.log(state)
 
     return {
         count: state.testReducer.count,
@@ -134,9 +148,22 @@ let mapStateToProps = (state) => {
         currentPage: state.houseReducer.currentPage,
         filters: state.filtersReducer.filters,
         totalHouses: state.houseReducer.totalHouses,
-        sortValue: state.filtersReducer.sortValue
+        sortValue: state.filtersReducer.sortValue,
+        fullFilters: state.filtersReducer.fullFilters,
+        isActiveModal: state.modalReducer.isActiveModal,
+        activeIndex: state.carouselReducer.activeIndex
     }
 }
 
 
-export default connect(mapStateToProps, { setInputValue, setModalHouseData, setTotalPages, setCurrentPage, setFiltersValue, setTotalHouses, setSortValue })(App);
+
+export default connect(
+    mapStateToProps,
+    {
+        setInputValue, setModalHouseData,
+        setTotalPages, setCurrentPage,
+        setFiltersValue, setTotalHouses,
+        setSortValue, setFullFilters,
+        setIsActiveModal, setActiveIndex
+    })
+    (App);

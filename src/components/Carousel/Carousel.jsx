@@ -2,16 +2,15 @@ import { useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 
 
-function ControlledCarousel({image}) {
-    const [index, setIndex] = useState(0);
+function ControlledCarousel({image, activeIndex, setActiveIndex}) {
 
     const handleSelect = (selectedIndex) => {
-        setIndex(selectedIndex);
+        setActiveIndex(selectedIndex);
     };
 
     return (
         <div className='carousel__wrapper'>
-            <Carousel activeIndex={index} onSelect={handleSelect} interval={null}>
+            <Carousel activeIndex={activeIndex} onSelect={handleSelect} interval={null}>
                 <Carousel.Item>
                     <div className="d-flex justify-content-center w-100 h-100">
                         <img

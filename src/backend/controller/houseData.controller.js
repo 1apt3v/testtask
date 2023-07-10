@@ -119,7 +119,7 @@ class HouseDataController {
 
         let queryObj = {}
 
-        console.log(params)
+        // console.log(params)
 
         // Фильтр для цены
         if (pricefrom) {
@@ -202,8 +202,6 @@ class HouseDataController {
             newPage *= maxElement
         }
 
-        console.log('123123123', sortvalue)
-
         const filteredHouses = await FlatsData.findAndCountAll({
             where: {
                 ...queryObj
@@ -214,7 +212,7 @@ class HouseDataController {
         })
         // .then(data => console.log(data.count))
 
-        console.log(filteredHouses.count)
+        // console.log(filteredHouses.count)
         res.json(filteredHouses)
 
 

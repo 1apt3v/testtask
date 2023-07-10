@@ -5,11 +5,9 @@ import Button from 'react-bootstrap/Button';
 
 
 
-const FiltersForms = ({ setFiltersValue, totalHouses }) => {
+const FiltersForms = ({ setFiltersValue, totalHouses, fullFilters, setFullFilters }) => {
     const { register, handleSubmit, watch, formState: { errors }, control } = useForm()
     const { dirtyFields } = useFormState({ control });
-
-    const [fullFilters, setFullFilters] = React.useState(false)
 
     const onSubmit = (data) => {
         const arrDirtyFields = Object.keys(dirtyFields)
@@ -77,7 +75,7 @@ const FiltersForms = ({ setFiltersValue, totalHouses }) => {
                 {/* {errors.exampleRequired && <span>This field is required</span>} */}
 
                 <div className='found__objects'>
-                    <span>Всего найдено: {totalHouses} объекта</span>
+                    <span>Всего найдено: {totalHouses}</span>
                 </div>
 
                 <input type="submit" className='send__button__filters' />

@@ -2,11 +2,13 @@ import { createAction, createReducer } from "@reduxjs/toolkit";
 
 const initialState = {
     filters: {},
-    sortValue: ''
+    sortValue: '', 
+    fullFilters: false
 }
 
 export const setFiltersValue = createAction('SETFILERSVALUE')
 export const setSortValue = createAction('SETSORTVALUE')
+export const setFullFilters = createAction('SETFULLFILTERS')
 
 
 export default createReducer(initialState, {
@@ -16,5 +18,8 @@ export default createReducer(initialState, {
     },
     [setSortValue]: (state, action) => {
         state.sortValue = action.payload
+    },
+    [setFullFilters]: (state, action) => {
+        state.fullFilters = action.payload
     }
 })

@@ -17,19 +17,18 @@ const Main = ({
     currentPage, setCurrentPage,
     filters, setFiltersValue,
     totalHouses,
-    sortValue, setSortValue
+    sortValue, setSortValue,
+    fullFilters, setFullFilters,
+    isActiveModal, setIsActiveModal,
+    activeIndex, setActiveIndex
 }) => {
-
-    const [modalShow, setModalShow] = React.useState(true);
-
-
 
     const CardApartmentElement = data.map(house => {
         return (
             <div className='button__cards' key={house.id} onClick={() => {
                 const obj = data.find(data => data.id === house.id)
                 setModalHouseData(obj)
-                setModalShow(true)
+                setIsActiveModal(true)
 
             }}>
                 <CardApartment
@@ -55,7 +54,7 @@ const Main = ({
                     <h2>Сортировка</h2>
                     <SortForms sortValue={sortValue} setSortValue={setSortValue} />
                     <h2>Фильтры</h2>
-                    <FiltersForms totalHouses={totalHouses} setFiltersValue={setFiltersValue} />
+                    <FiltersForms totalHouses={totalHouses} setFiltersValue={setFiltersValue} fullFilters={fullFilters} setFullFilters={setFullFilters} />
                 </div>
 
                 <div className="cards">
@@ -69,12 +68,14 @@ const Main = ({
 
 
             <MyVerticallyCenteredModal
-                show={modalShow}
+                show={isActiveModal}
                 onHide={() => {
                     setModalHouseData({})
-                    setModalShow(false)
+                    setIsActiveModal(false)
                 }}
                 modalHouseData={modalHouseData}
+                activeIndex={activeIndex}
+                setActiveIndex={setActiveIndex}
             />
 
         </main>

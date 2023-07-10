@@ -5,7 +5,7 @@ import ModalInfoElement from './ModalInfoElement';
 
 
 
-function MyVerticallyCenteredModal({ show, onHide, modalHouseData }) {
+function MyVerticallyCenteredModal({ show, onHide, modalHouseData, activeIndex, setActiveIndex }) {
 
     if ((modalHouseData === undefined) || (Object.keys(modalHouseData).length === 0)) {
         return 
@@ -25,7 +25,7 @@ function MyVerticallyCenteredModal({ show, onHide, modalHouseData }) {
             <Button onClick={onHide}>Close</Button>
             <Modal.Body>
                 <div className="modal__display">
-                    <ControlledCarousel image={layout_image} />
+                    <ControlledCarousel image={layout_image} activeIndex={activeIndex} setActiveIndex={setActiveIndex} />
                     <div className='modal__info'>
                         <h4>Информация о объекте</h4>
                         <ModalInfoElement title={"Этаж объекта"} content={floor} />

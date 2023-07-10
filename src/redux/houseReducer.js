@@ -1,5 +1,7 @@
 import { createAction, createReducer } from "@reduxjs/toolkit";
 
+
+
 const initialState = {
     houses: [],
     modalHouseData: {},
@@ -23,7 +25,11 @@ export default createReducer(initialState, {
         state.modalHouseData = action.payload
     },
     [setTotalPages]: (state, action) => {
-        state.totalPages = action.payload / 8
+        let totalPages = action.payload / 8
+        if (!Number.isInteger(totalPages)) {
+            totalPages = Math.ceil(totalPages)
+        }
+        state.totalPages = totalPages
     },
     [setCurrentPage]: (state, action) => {
         state.currentPage = action.payload
