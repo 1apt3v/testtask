@@ -1,0 +1,12 @@
+.sorts {
+    display: flex;
+    flex-direction: column;
+
+
+    select {
+        border: 1px solid black;
+        border-radius: 5px;
+        padding: 1px 7px;
+        background-color: white;
+    }
+}

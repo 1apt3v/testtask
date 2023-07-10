@@ -116,17 +116,10 @@ class HouseDataController {
             page,
         } = params
 
-        console.log('33333333333333333333', page)
-
 
         let queryObj = {}
 
         console.log(params)
-
-        // Проверка на пустоту
-
-
-
 
         // Фильтр для цены
         if (pricefrom) {

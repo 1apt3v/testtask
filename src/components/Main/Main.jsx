@@ -5,6 +5,7 @@ import InputComponent from '../InputComponent/InputComponent';
 
 import PaginationComponent from '../PaginationComponent/PaginationComponent';
 import FiltersForms from '../FiltersForms/FiltersForms';
+import SortForms from '../SortForms/SortForms';
 
 
 
@@ -43,6 +44,8 @@ const Main = ({ data, modalHouseData, setModalHouseData, totalPages, setTotalPag
         <main>
             <div className='wrapper__content'>
                 <div className="filters">
+                    <h2>Сортировка</h2>
+                    <SortForms />
                     <h2>Фильтры</h2>
                     <FiltersForms totalHouses={totalHouses} setFiltersValue={setFiltersValue} />
                 </div>
