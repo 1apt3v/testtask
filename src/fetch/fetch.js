@@ -24,7 +24,38 @@ export const getCountHouses = async () => {
         .then(res => {
             return res.json()
         })
-        .then(count => count[0].count)
+        .then(count => count)
+        .catch(err => {
+            console.error(err)
+            return { message: '404' }
+        })
+}
+
+export const getFilteredHouses = async (currentPage, filters) => {
+    const url = `http://localhost:8080/api/houseWithFilterData`
+    const arrQueryParams = ['?', `page=${currentPage}&`]
+    const keysFilters = Object.keys(filters)
+    const valuesFilters = Object.values(filters)
+
+    for (let i = 0; i < Object.keys(filters).length; i++) {
+        arrQueryParams.push(`${keysFilters[i].toLocaleLowerCase()}=${valuesFilters[i]}`)
+        if (!(i === Object.keys(filters).length - 1)) {
+            arrQueryParams.push('&')
+        }
+    }
+    const stringQueryParams = arrQueryParams.join('')
+    const newUrl = url + stringQueryParams
+    console.log(newUrl)
+
+
+    // если фильтры пустые
+
+
+    return await fetch(newUrl)
+        .then(res => {
+            return res.json()
+        })
+        .then(data => data)
         .catch(err => {
             console.error(err)
             return { message: '404' }

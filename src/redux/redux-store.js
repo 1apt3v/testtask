@@ -1,10 +1,12 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import testReducer from './testReducer';
 import houseReducer from './houseReducer';
+import filtersReducer from './filtersReducer';
 
 let reducers = combineReducers({
     testReducer: testReducer,
-    houseReducer: houseReducer
+    houseReducer: houseReducer,
+    filtersReducer: filtersReducer
 })
 
 

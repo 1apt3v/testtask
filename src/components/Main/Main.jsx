@@ -9,10 +9,9 @@ import FiltersForms from '../FiltersForms/FiltersForms';
 
 
 
-const Main = ({ data, modalHouseData, setModalHouseData, totalPages, setTotalPages, currentPage, setCurrentPage }) => {
-    
-    const [modalShow, setModalShow] = React.useState(true);
+const Main = ({ data, modalHouseData, setModalHouseData, totalPages, setTotalPages, currentPage, setCurrentPage, filters, setFiltersValue, totalHouses }) => {
 
+    const [modalShow, setModalShow] = React.useState(true);
 
 
 
@@ -45,7 +44,7 @@ const Main = ({ data, modalHouseData, setModalHouseData, totalPages, setTotalPag
             <div className='wrapper__content'>
                 <div className="filters">
                     <h2>Фильтры</h2>
-                    <FiltersForms />
+                    <FiltersForms totalHouses={totalHouses} setFiltersValue={setFiltersValue} />
                 </div>
 
                 <div className="cards">

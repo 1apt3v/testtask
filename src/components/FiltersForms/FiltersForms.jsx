@@ -1,40 +1,72 @@
 import React from 'react';
-import { useForm, SubmitHandler } from "react-hook-form"
+import { useForm, SubmitHandler, useFormState } from "react-hook-form"
 import Button from 'react-bootstrap/Button';
 
 
 
 
-const FiltersForms = () => {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm()
+const FiltersForms = ({ setFiltersValue, totalHouses }) => {
+    const { register, handleSubmit, watch, formState: { errors }, control } = useForm()
+    const { dirtyFields } = useFormState({ control });
 
     const [fullFilters, setFullFilters] = React.useState(false)
 
-    const onSubmit = (data) => console.log(data)
+    const onSubmit = (data) => {
+        const arrDirtyFields = Object.keys(dirtyFields)
+        let newObj = {}
+        for(let i = 0; i < arrDirtyFields.length; i++) {
+            newObj[arrDirtyFields[i]] = data[arrDirtyFields[i]]
+        }
+
+        setFiltersValue(newObj)
+    }
+
 
     return (
         <>
             <form onSubmit={handleSubmit(onSubmit)} className='form__filters' >
                 <div className='main__filters'>
                     <span>Цена</span>
-                    <div className='filters__price'>
+                    <div className='filters__from__to'>
                         <input className='inputComponent' defaultValue="" placeholder='От' {...register("priceFrom")} />
                         <input className='inputComponent' defaultValue="" placeholder='До' {...register("priceTo")} />
                     </div>
 
                     <span>Количество комнат</span>
-                    <input className='inputComponent' defaultValue="" {...register("numberOfRooms")} />
+                    <div className='filters__from__to'>
+                        <input className='inputComponent' defaultValue="" placeholder='От' {...register("numberOfRoomsFrom")} />
+                        <input className='inputComponent' defaultValue="" placeholder='До' {...register("numberOfRoomsTo")} />
+                    </div>
+
                     <span>Общая площадь</span>
-                    <input className='inputComponent' defaultValue="" {...register("totalArea")} />
+                    <div className='filters__from__to'>
+                        <input className='inputComponent' defaultValue="" placeholder='От' {...register("totalAreaFrom")} />
+                        <input className='inputComponent' defaultValue="" placeholder='До' {...register("totalAreaTo")} />
+                    </div>
+
                 </div>
 
                 <div className='secondary__filters' style={fullFilters ? { display: 'flex' } : { display: 'none' }}>
+
                     <span>Этаж</span>
-                    <input className='inputComponent' defaultValue="" {...register("floor")} />
+                    <div className='filters__from__to'>
+                        <input className='inputComponent' defaultValue="" placeholder='От' {...register("floorFrom")} />
+                        <input className='inputComponent' defaultValue="" placeholder='До' {...register("floorTo")} />
+                    </div>
+
+
                     <span>Площадь кухни</span>
-                    <input className='inputComponent' defaultValue="" {...register("kitchenArea")} />
+                    <div className='filters__from__to'>
+                        <input className='inputComponent' defaultValue="" placeholder='От' {...register("kitchenAreaFrom")} />
+                        <input className='inputComponent' defaultValue="" placeholder='До' {...register("kitchenAreaTo")} />
+                    </div>
+
                     <span>Жилая площадь</span>
-                    <input className='inputComponent' defaultValue="" {...register("livingArea")} />
+                    <div className='filters__from__to'>
+                        <input className='inputComponent' defaultValue="" placeholder='От' {...register("livingAreaFrom")} />
+                        <input className='inputComponent' defaultValue="" placeholder='До' {...register("livingAreaTo")} />
+                    </div>
+
                 </div>
 
 
@@ -42,7 +74,11 @@ const FiltersForms = () => {
 
                 {/* <input className='inputComponent' {...register("exampleRequired", { required: true })} /> */}
 
-                {errors.exampleRequired && <span>This field is required</span>}
+                {/* {errors.exampleRequired && <span>This field is required</span>} */}
+
+                <div className='found__objects'>
+                    <span>Всего найдено: {totalHouses} объекта</span>
+                </div>
 
                 <input type="submit" className='send__button__filters' />
 

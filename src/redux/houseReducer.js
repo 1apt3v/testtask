@@ -4,7 +4,8 @@ const initialState = {
     houses: [],
     modalHouseData: {},
     totalPages: 0,
-    currentPage: 1
+    currentPage: 1,
+    totalHouses: 0
 }
 
 
@@ -12,6 +13,7 @@ export const setHousesData = createAction('SETHOUSESDATA')
 export const setModalHouseData = createAction('SETMODALHOUSEDATA')
 export const setTotalPages = createAction('SETTOTALPAGES')
 export const setCurrentPage = createAction('SETCURRENTPAGE')
+export const setTotalHouses = createAction('SETTOTALHOUSES')
 
 export default createReducer(initialState, {
     [setHousesData]: (state, action) => {
@@ -25,6 +27,9 @@ export default createReducer(initialState, {
     },
     [setCurrentPage]: (state, action) => {
         state.currentPage = action.payload
+    },
+    [setTotalHouses]: (state, action) => {
+        state.totalHouses = action.payload
     }
 })
 

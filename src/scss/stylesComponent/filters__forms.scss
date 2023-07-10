@@ -18,7 +18,7 @@
     flex-direction: column;
 }
 
-.filters__price {
+.filters__from__to {
     
     display: flex;
     justify-content: space-between;
@@ -26,6 +26,13 @@
     input {
         width: 45%;
     }
+}
+
+.found__objects {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
 }
 
 .send__button__filters {
