@@ -6,15 +6,6 @@ function PaginationComponent({ currentPage, setCurrentPage, totalPages, setTotal
 
     // console.log(currentPage)
 
-
-    items.push(<Pagination.Prev key='prev' onClick={() => {
-        if (currentPage > 1) {
-            setCurrentPage(currentPage - 1)
-        }
-    }
-    } />)
-
-
     for (let page = 1; page <= totalPages; page++) {
         items.push(
             <Pagination.Item key={page} active={page === currentPage} onClick={() => setCurrentPage(page)}>
@@ -23,14 +14,23 @@ function PaginationComponent({ currentPage, setCurrentPage, totalPages, setTotal
         );
     }
 
-    items.push(<Pagination.Next key='next' onClick={() => {
-        if (currentPage < totalPages) {
-            setCurrentPage(currentPage + 1)
+    return (<Pagination>
+        <Pagination.Prev key='prev' onClick={() => {
+            if (currentPage > 1) {
+                setCurrentPage(currentPage - 1)
+            }
         }
-    }
-    } />)
-
-    return (<Pagination>{items}</Pagination>)
+        } />
+        <div className='pagination__pages'>
+            {items}
+        </div>
+        <Pagination.Next key='next' onClick={() => {
+            if (currentPage < totalPages) {
+                setCurrentPage(currentPage + 1)
+            }
+        }
+        } />
+    </Pagination>)
 }
 
 export default PaginationComponent;

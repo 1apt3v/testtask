@@ -2,11 +2,13 @@ import { useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 
 
-function ControlledCarousel({image, activeIndex, setActiveIndex}) {
+function ControlledCarousel({ image, activeIndex, setActiveIndex, pos_on_floor }) {
 
     const handleSelect = (selectedIndex) => {
         setActiveIndex(selectedIndex);
     };
+
+    const posHouse = `house${pos_on_floor}`
 
     return (
         <div className='carousel__wrapper'>
@@ -22,9 +24,10 @@ function ControlledCarousel({image, activeIndex, setActiveIndex}) {
 
                 </Carousel.Item>
                 <Carousel.Item>
+                    <div className={`selection__area ${posHouse}`}></div>
                     <div className="d-flex justify-content-center w-100 h-100">
                         <img
-                            className="d-block"
+                            className="d-block d__block__opacity"
                             src="https://cdn.esoft.digital/content/cluster/layouts/18/0c/e293cb975e87b72b6fba22106422e03e9f8b0c18.png"
                             alt="Second slide"
                         />

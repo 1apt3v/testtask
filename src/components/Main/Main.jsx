@@ -72,6 +72,7 @@ const Main = ({
                 onHide={() => {
                     setModalHouseData({})
                     setIsActiveModal(false)
+                    setActiveIndex(0)
                 }}
                 modalHouseData={modalHouseData}
                 activeIndex={activeIndex}
