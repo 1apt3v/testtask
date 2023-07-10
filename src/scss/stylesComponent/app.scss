@@ -13,7 +13,7 @@
 
 
 header {
-    @include hfpar(80px, yellow);
+    @include hfpar(80px, rgb(230, 230, 230));
     margin-bottom: 20px;
 
 
@@ -35,7 +35,7 @@ header {
 }
 
 main {
-    background-color: red;
+    // background-color: red;
     max-width: $width__main;
     // height: 100vh;
     padding: 0;

@@ -8,14 +8,14 @@ function PaginationComponent({ currentPage, setCurrentPage, totalPages, setTotal
 
     for (let page = 1; page <= totalPages; page++) {
         items.push(
-            <Pagination.Item key={page} active={page === currentPage} onClick={() => setCurrentPage(page)}>
+            <Pagination.Item linkClassName='pagination__element' key={page} active={page === currentPage} onClick={() => setCurrentPage(page)}>
                 {page}
             </Pagination.Item>,
         );
     }
 
     return (<Pagination>
-        <Pagination.Prev key='prev' onClick={() => {
+        <Pagination.Prev linkClassName='pagination__element' key='prev' onClick={() => {
             if (currentPage > 1) {
                 setCurrentPage(currentPage - 1)
             }
@@ -24,7 +24,7 @@ function PaginationComponent({ currentPage, setCurrentPage, totalPages, setTotal
         <div className='pagination__pages'>
             {items}
         </div>
-        <Pagination.Next key='next' onClick={() => {
+        <Pagination.Next linkClassName='pagination__element' key='next' onClick={() => {
             if (currentPage < totalPages) {
                 setCurrentPage(currentPage + 1)
             }

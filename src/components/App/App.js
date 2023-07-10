@@ -47,7 +47,8 @@ function App({
 
 
     const getData = async (currentPage, filters, sortValue) => {
-        setLoaderActive(true)
+        
+
         let data = await getFilteredHouses(currentPage, filters, sortValue)
         if (data.message == '404') {
             console.log(data.message)
@@ -56,7 +57,7 @@ function App({
             dispatch(setHousesData(data.rows))
             dispatch(setTotalPages(data.count))
             setTotalHouses(data.count)
-            setLoaderActive(false)
+
         }
     }
 
@@ -149,6 +150,7 @@ function App({
 
 let mapStateToProps = (state) => {
     console.log(state)
+    // debugger
 
     return {
         count: state.testReducer.count,

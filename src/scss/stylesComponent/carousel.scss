@@ -28,51 +28,22 @@
 }
 
 .selection__area {
+
     position: absolute;
-    opacity: 0;
-    background-color: green;
-    transition: opacity .5s;
+    width: 100%;
+    // z-index: 20;
+    // opacity: 0;
+    // background-color: green;
+    // transition: opacity .5s;
+
+
 }
 
 .carousel__wrapper:hover {
     .selection__area {
-        opacity: 0.5;
+        // opacity: 0.5;
     }
 }
-
-@mixin house__position($w, $h, $l, $t ) {
-    width: $w;
-    height: $h;
-    left: $l;
-    top: $t;
-}
-
-
-.house1 {
-    @include house__position(132px, 120px, 223px, 380px)
-}
-
-.house2 {
-    @include house__position(155px, 190px, 67px, 330px)
-}
-
-.house3 {
-    @include house__position(155px, 110px, 67px, 220px)
-}
-
-.house4 {
-    @include house__position(155px, 110px, 67px, 110px)
-}
-
-.house5 {
-    @include house__position(240px, 130px, 67px, 20px)
-}
-
-.house6 {
-    @include house__position(130px, 260px, 307px, 20px)
-}
-
-
 
 
 
@@ -82,20 +53,20 @@
 
 }
 
-// .d__block__opacity {
-//     transition: opacity .5s;
-// }
+.d__block__opacity {
+    transition: opacity .5s;
+}
 
-// .carousel__wrapper:hover {
-//     .d__block__opacity {
-//         opacity: 0.3;
-//         -moz-opacity: 0.3;
-//         filter: alpha(opacity=30) black;
-//         -khtml-opacity: 0.3;
+.carousel__wrapper:hover {
+    .d__block__opacity {
+        opacity: 0.3;
+        -moz-opacity: 0.3;
+        filter: alpha(opacity=30) black;
+        -khtml-opacity: 0.3;
 
-//     }
+    }
 
-// }
+}
 
 
 

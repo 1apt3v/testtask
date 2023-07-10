@@ -1,5 +1,11 @@
 import { useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
+import imgHouse1 from './../../img/house1.png'
+import imgHouse2 from './../../img/house2.png'
+import imgHouse3 from './../../img/house3.png'
+import imgHouse4 from './../../img/house4.png'
+import imgHouse5 from './../../img/house5.png'
+import imgHouse6 from './../../img/house6.png'
 
 
 function ControlledCarousel({ image, activeIndex, setActiveIndex, pos_on_floor, loaderActive, setLoaderActive }) {
@@ -9,6 +15,9 @@ function ControlledCarousel({ image, activeIndex, setActiveIndex, pos_on_floor, 
     };
 
     const posHouse = `house${pos_on_floor}`
+
+
+    const arrImg = [imgHouse1, imgHouse2, imgHouse3, imgHouse4, imgHouse5, imgHouse6]
 
     return (
         <div className='carousel__wrapper'>
@@ -24,7 +33,17 @@ function ControlledCarousel({ image, activeIndex, setActiveIndex, pos_on_floor, 
 
                 </Carousel.Item>
                 <Carousel.Item>
-                    <div className={`selection__area ${posHouse}`}></div>
+                    {/* <img className="d-block" src={arrImg[pos_on_floor - 1]} alt="" /> */}
+                    <div className='selection__area'>
+                        <div className="d-flex justify-content-center w-100 h-100">
+                            <img
+                                className="d-block"
+                                src={arrImg[pos_on_floor - 1]}
+                                alt="Second slide"
+                            />
+                        </div>
+                    </div>
+
                     <div className="d-flex justify-content-center w-100 h-100">
                         <img
                             className="d-block d__block__opacity"

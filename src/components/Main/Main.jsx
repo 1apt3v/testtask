@@ -51,43 +51,41 @@ const Main = ({
 
     return (
         <main>
-            {loaderActive
-                ? <Loader />
-                : (<>
-                    <div className='wrapper__content'>
-                        <div className="filters">
-                            <h2>Сортировка</h2>
-                            <SortForms sortValue={sortValue} setSortValue={setSortValue} />
-                            <h2>Фильтры</h2>
-                            <FiltersForms totalHouses={totalHouses} setFiltersValue={setFiltersValue} fullFilters={fullFilters} setFullFilters={setFullFilters} />
-                        </div>
-
-                        <div className="cards">
+            <div className='wrapper__content'>
+                <div className="filters">
+                    <h2>Сортировка</h2>
+                    <SortForms sortValue={sortValue} setSortValue={setSortValue} />
+                    <h2>Фильтры</h2>
+                    <FiltersForms totalHouses={totalHouses} setFiltersValue={setFiltersValue} fullFilters={fullFilters} setFullFilters={setFullFilters} />
+                </div>
+                <div className="cards"  >
+                    {loaderActive
+                        ? <div style={loaderActive ? { width: '1200px' } : null}><Loader /></div>
+                        : (<>
                             {CardApartmentElement}
+                        </>
+                        )
+                    }
+                </div>
+
+            </div>
+            <PaginationComponent totalPages={totalPages} setTotalPages={setTotalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+            <MyVerticallyCenteredModal
+                show={isActiveModal}
+                onHide={() => {
+                    setModalHouseData({})
+                    setIsActiveModal(false)
+                    setActiveIndex(0)
+                }}
+                modalHouseData={modalHouseData}
+                activeIndex={activeIndex}
+                setActiveIndex={setActiveIndex}
+            />
 
 
-                        </div>
-                    </div>
-
-                    <PaginationComponent totalPages={totalPages} setTotalPages={setTotalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
 
 
-                    <MyVerticallyCenteredModal
-                        show={isActiveModal}
-                        onHide={() => {
-                            setModalHouseData({})
-                            setIsActiveModal(false)
-                            setActiveIndex(0)
-                        }}
-                        modalHouseData={modalHouseData}
-                        activeIndex={activeIndex}
-                        setActiveIndex={setActiveIndex}
-                    />
-                </>
 
-                )
-
-            }
 
         </main>
     );

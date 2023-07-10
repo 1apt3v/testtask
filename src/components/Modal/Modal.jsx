@@ -46,7 +46,6 @@ function MyVerticallyCenteredModal({ show, onHide, modalHouseData, activeIndex, 
             dialogClassName="my-modal"
         >
             <Modal.Header closeButton></Modal.Header>
-            {/* <Button onClick={onHide}>Close</Button> */}
             <Modal.Body>
                 <div className="modal__display">
                     <ControlledCarousel
